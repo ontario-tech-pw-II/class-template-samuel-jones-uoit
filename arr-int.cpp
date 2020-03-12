@@ -61,7 +61,7 @@ T DynamicArray<T>::getEntry(int index)
 {
   if ((index < 0) || (index >= size)){
     cout << "Out of the index !" << endl;
-    return 0;
+    return (T)0;
 
   }
   return dynamicArray[index];
@@ -70,25 +70,8 @@ T DynamicArray<T>::getEntry(int index)
 
 int main()
 {
-  /* 
-  int Test Code
-  DynamicArray x;
 
-  // Adding entries
-  x.addEntry(7);
-  x.addEntry(5);
-  x.addEntry(4);
-  x.addEntry(2);
-  x.addEntry(8);
-
-  // Output entries
-  cout << "List:" << endl;
-  
-  for (int i = 0; i < x.getSize(); i++)
-    cout << x.getEntry(i) << endl;
-  */
-    DynamicArray<string> x;
-  // string Test Code
+  DynamicArray<string> x;
   // Adding entries
   x.addEntry("Frank");
   x.addEntry("Wiggum");
