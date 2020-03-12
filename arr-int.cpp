@@ -2,47 +2,47 @@
 #include <cstdlib>
 #include <iostream>
 using namespace std;
-
+template <class T>
 class DynamicArray 
 {
 public:
   DynamicArray();
   ~DynamicArray();
-  void addEntry(int newEntry);
-  int getEntry(int index);
+  void addEntry(T newEntry);
+  T getEntry(int index);
   int getSize();
 
 private:
-  int *dynamicArray;
+  T *dynamicArray;
   int size;
 };
-
-DynamicArray::DynamicArray()
+template <class T>
+DynamicArray<T>::DynamicArray()
 {
   dynamicArray = nullptr;
   size = 0;
 }
 
-
-DynamicArray::~DynamicArray()
+template <class T>
+DynamicArray<T>::~DynamicArray()
 {
   if (dynamicArray != nullptr)
     delete[] dynamicArray;
 }
-
-int DynamicArray::getSize()
+template <class T>
+int DynamicArray<T>::getSize()
 {
   return size;
 }
-
 // Adds an entry to the dynamic array. 
-void DynamicArray::addEntry(int newEntry)
+template <class T>
+void DynamicArray<T>::addEntry(T newEntry)
 {
     // Create a new array, copy the contents of the old array, then delete it
-    int *newArray = new int[size + 1];
+    T *newArray = new T[size + 1];
     for (int i = 0; i < size; i++)
     {
-    newArray[i] = dynamicArray[i];
+      newArray[i] = dynamicArray[i];
     }
     
     delete[] dynamicArray;
@@ -56,7 +56,8 @@ void DynamicArray::addEntry(int newEntry)
 
 
 // Retrieve the element at a given index
-int DynamicArray::getEntry(int index)
+template <class T>
+T DynamicArray<T>::getEntry(int index)
 {
   if ((index < 0) || (index >= size)){
     cout << "Out of the index !" << endl;
@@ -69,6 +70,8 @@ int DynamicArray::getEntry(int index)
 
 int main()
 {
+  /* 
+  int Test Code
   DynamicArray x;
 
   // Adding entries
@@ -83,7 +86,20 @@ int main()
   
   for (int i = 0; i < x.getSize(); i++)
     cout << x.getEntry(i) << endl;
+  */
+    DynamicArray<string> x;
+  // string Test Code
+  // Adding entries
+  x.addEntry("Frank");
+  x.addEntry("Wiggum");
+  x.addEntry("Nahasapeemapetilon");
+  x.addEntry("Quimby");
+  x.addEntry("Flanders");
+
+  // Output entries
+  cout << "List:" << endl;
   
+  for (int i = 0; i < x.getSize(); i++)
+    cout << x.getEntry(i) << endl;
   return 0;
 }
-
